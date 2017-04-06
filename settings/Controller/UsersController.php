@@ -443,10 +443,15 @@ class UsersController extends Controller {
 					$link = $this->urlGenerator->getAbsoluteURL('/');
 				}
 
+				$displayname = $user->getDisplayName();
+
 				// data for the mail template
 				$mailData = array(
 					'username' => $username,
-					'url' => $link
+					'url' => $link,
+					'generated_password' => $generatedPassword,
+					'url_client_install' => 'https://nextcloud.com/install/#install-clients',
+					'displayname' => ($username !== $displayname) ? $displayname : '',
 				);
 
 				$mail = new TemplateResponse('settings', 'email.new_user', $mailData, 'blank');

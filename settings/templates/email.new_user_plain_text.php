@@ -1,10 +1,13 @@
-<?php
-print_unescaped($l->t("Hey there,\n\njust letting you know that you now have a %s account.\n\nYour username: %s\nAccess it: %s\n\n", array($theme->getName(), $_['username'], $_['url'])));
+<?php p($l->t('Welcome aboard %s', [$_['displayname']]));?>
 
-// TRANSLATORS term at the end of a mail
-p($l->t("Cheers!"));
-?>
+<?php p($l->t('You have now an Nextcloud account, you can add, protect, and share your data.'));?>
+
+<?php if($_['generated_password']) { p($l->t('Set your password')); } else { p($l->t('Go to %s', [$theme->getName()])); } ?>: <?php p($_['url']); ?>
+
+<?php p($l->t('Install Client') . ': ' . $_['url_client_install']); ?>
 
 	--
 <?php p($theme->getName() . ' - ' . $theme->getSlogan()); ?>
-<?php print_unescaped("\n".$theme->getBaseUrl());
+<?php p($l->t('This is an automatically generated email, please do not reply.')); ?>
+
+
